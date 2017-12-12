@@ -24,7 +24,7 @@ _If you haven't used [grunt][] before, be sure to check out the [Getting Started
 From the same directory as your project's [Gruntfile][Getting Started] and [package.json][], install this plugin with the following command:
 
 ```bash
-npm install grunt-cache-bust --save-dev
+npm install Troy-Web-Consulting/grunt-cache-bust --save-dev
 ```
 
 Once the plugin has been installed, enabled it inside your Gruntfile.
@@ -78,12 +78,10 @@ The `src` part of the configuration you should have seen before as it's used by 
 // Here is a short summary of the options and some of their 
 defaults. Extra details are below.
 {
-    algorithm: 'md5',                             // Algorithm used for hashing files
     assets: ['css/*', 'js/*']                     // File patterns for the assets you wish to hash
     baseDir: './',                                // The base directory for all assets
     createCopies: true,                           // Create hashed copies of files
     deleteOriginals: false,                       // Delete the original file after hashing
-    encoding: 'utf8',                             // The encoding used when reading/writing files
     hash: '9ef00db36970718e',                     // A user defined hash for every file. Not recommended.
     jsonOutput: false,                            // Output the original => new URLs to a JSON file
     jsonOutputFilename: 'grunt-cache-bust.json',  // The file path and name of the exported JSON. Is relative to baseDir
@@ -94,12 +92,6 @@ defaults. Extra details are below.
     clearOutputDir: false                         // Clear output directory. If outputDir was not set clear will not work
 }
 ```
-
-#### options.algorithm
-Type: `String`  
-Default value: `'md5'`
-
-`algorithm` is dependent on the available algorithms supported by the version of OpenSSL on the platform. Examples are `'sha1'`, `'md5'`, `'sha256'`, `'sha512'`
 
 #### options.assets
 Type: `Array`
@@ -137,12 +129,6 @@ Type: `Boolean`
 Default value: `false`
 
 When set, `cachebust` will delete the original versions of the files that have been hashed. For example, `style.css` will be deleted after being copied to `style.dcf1d324cb50a1f9.css`.
-
-#### options.encoding
-Type: `String`  
-Default value: `'utf8'`
-
-The encoding of the file contents.
 
 #### options.hash
 Type: `String`

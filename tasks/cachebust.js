@@ -7,11 +7,9 @@ var crypto = require('crypto');
 var _ = require('grunt').util._;
 
 var DEFAULT_OPTIONS = {
-    algorithm: 'md5',
     baseDir: './',
     createCopies: true,
     deleteOriginals: false,
-    encoding: 'utf8',
     jsonOutput: false,
     jsonOutputFilename: 'grunt-cache-bust.json',
     length: 16,
@@ -158,7 +156,11 @@ module.exports = function(grunt) {
         }
 
         function generateFileHash(data) {
-            return opts.hash || crypto.createHash(opts.algorithm).update(data, opts.encoding).digest('hex').substring(0, opts.length);
+            if (opts.hash) {
+                return opts.hash;
+            }
+
+            return crypto.randomBytes(opts.length).toString("hex").substring(0, opts.length);
         }
 
         function addFileHash(str, hash, separator) {
